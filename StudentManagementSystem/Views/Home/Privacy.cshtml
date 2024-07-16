@@ -1,0 +1,101 @@
+﻿@model IEnumerable<StudentManagementSystem.Models.Student>
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <form asp-action="Update" id="myForm">
+                <div class="row">
+                    <div class="col">
+                        <input id="ID" type="hidden">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Frist Name</label>
+                            <input type="text" class="form-control" id="FNAME">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="LNAME">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="EMAIL">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="PASSWORD">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="CONFIRMPASSWORD">
+                </div>
+
+                <button class="btn btn-info" onclick="resetForm()" type="button" value="">Reset</button>
+                <input class="btn btn-primary" type="submit" value="Update">
+                <button type="submit" asp-action="Delete" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+
+    <h1>Student Details</h1>
+    <table class="table table-hover" id="table">
+        <thead>
+            <tr>
+                <th>Student Id</th>
+                <th>Frist Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Detail</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.FName</td>
+                    <td>@item.LName</td>
+                    <td>@item.Email</td>
+                    <td><a class="btn btn-success" asp-action="Detail" asp-route-id="@item.Id">Detail</a></td>
+                    <td><a class="btn btn-primary" asp-action="Update" asp-route-id="@item.Id">Update</a></td>
+                    <td><a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.Id">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script>
+
+        var table = document.getElementById('table');
+
+        for (var i = 1; i < table.rows.length;i++) {
+            
+            table.rows[i].onclick = function () {
+
+                document.getElementById("ID").value = this.cells[0].innerHTML;
+                document.getElementById("FNAME").value = this.cells[1].innerHTML;
+                document.getElementById("LNAME").value = this.cells[2].innerHTML;
+                document.getElementById("EMAIL").value = this.cells[3].innerHTML;
+
+            }
+        }
+
+        function resetForm(){
+            document.getElementById("myForm").reset();
+        }
+
+    </script>
+</div>
+
+
+
+
+

@@ -1,0 +1,45 @@
+﻿@model StudentManagementSystem.Models.Student;
+
+@{
+}
+<div class="container">
+    <h3>Student Update</h3>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <form asp-action="Update">
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">First Name</label>
+                            <input type="text" class="form-control" asp-for="FName" id="" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" asp-for="LName" id="" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Email</label>
+                    <input type="email" class="form-control" asp-for="Email" id="" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Password</label>
+                    <input type="password" class="form-control" asp-for="Password" id="" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" asp-for="ConfirmPassword" id="" required>
+                </div>
+
+                <input class="btn btn-primary" type="submit" value="Submit">
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
